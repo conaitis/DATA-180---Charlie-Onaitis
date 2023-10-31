@@ -8,7 +8,8 @@ date: '`r format(Sys.Date(), "%B %d, %Y")`'
 output: 
   html_document
 ---
-
+19/20
+. 
 **Due date:** October 26 beginning of class.
 
 Let's get some practice with **dplyr**! For this assignment, you will work with Mario Kart data! This data is made available as part of Tidy Tuesday. A codebook is available at https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-05-25.
@@ -20,7 +21,7 @@ First, load in dplyr. Make sure to install dplyr (or tidyverse in general) first
 For the entire assignment, make sure to use dplyr functions only. (no base R!)
 
 ```{r, warning=FALSE, message=FALSE}
-install.packages("dplyr")
+#install.packages("dplyr")
 library(dplyr)
 records <- read.csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-25/records.csv')
 head(records)
@@ -92,7 +93,7 @@ Continuing with your results in Question 6: Do you notice a trend across years? 
 
 ```{r, fig.width=10}
 #It appears that there is no clear pattern depending on the year. 
-install.packages("ggplot2")
+#install.packages("ggplot2")
 library(ggplot2)
 records %>%
   mutate(year=substr(date, 1, 4)) %>%
@@ -119,7 +120,7 @@ Three Lap time reports the total time spent finishing three laps in total, as op
 records %>%
   mutate(time_per = ifelse(type=="Three Lap",time/3, time)) %>%
    ggplot(.,aes(time_per,fill = type)) + geom_histogram(alpha=.5, position = "identity")
-This assumption is correct, as the three lap times are generally lower than single lap races.
+#This assumption is correct, as the three lap times are generally lower than single lap races.
 ```
 # Question 10
 There appears to be recent discoveries of shortcuts within some of the tracks causing a number of extraordinarily fast records set in `Three Lap` tracks (Have you noticed this in your graph in Question 9?). Replicate your histogram in Question 9 with `shortcut=="No"` filter.
@@ -138,6 +139,7 @@ Lastly, compare the mean `time` by `system_played`. Do you observe a difference 
 records %>%
   group_by(system_played) %>%
   summarize(mean=mean(time))
+# Do you observe a difference across the two game systems? (-2)
 ```
 
 You are done! 🏁 Don't forget to commit and push your .Rmd file to your Github repository before the due date. (Well... the checkered flag emoji is now super relevant for this assignment!)
