@@ -8,7 +8,7 @@ date: '`r format(Sys.Date(), "%B %d, %Y")`'
 output: 
   html_document
 ---
-
+16/20. Good job. 
 ```{r global options, include = FALSE}
 knitr::opts_chunk$set(warning=FALSE, message=FALSE)
 ```
@@ -65,8 +65,11 @@ Mammals_Milk_Std<-round(scale(Mammals_Milk),2)
 MMilk_km_3 <- kmeans(Mammals_Milk_Std, centers = 3, nstart=100)
 MMilk_km_4 <- kmeans(Mammals_Milk_Std, centers = 4, nstart=100)
 #Mammals_Milk <- data_frame(Mammals_Milk, km_3 = MMilk_km_3$cluster, km_4 = MMilk_km_4$cluster)
+
 Mammals_Milk %>% arrange(km_3)
 Mammals_Milk %>% arrange(km_4)
+
+# Code breaking. You need to define variables before you use them. (-2)
 ```
 
 # Question 4
@@ -110,6 +113,8 @@ for(i in 1:8){
   wgss[i] <-kmeans(Mammals_Milk_Std, centers = i, nstart=50)$tot.withinss}
 wgss
 plot(c(1:8), wgss, xlab = "Number of Groups")
+
+# How many clusters does the elbow plot suggest? How does this compare to your impression from the dendrogram in Question 2?
 ```
 
 
